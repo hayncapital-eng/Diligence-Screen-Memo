@@ -1,0 +1,404 @@
+<title>162k on a 31k Trend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ground:      #fbfaf6;
+    --surface:     #ffffff;
+    --ink:         #14161a;
+    --ink-soft:    #4b4f57;
+    --ink-mute:    #7d818a;
+    --rule:        #dcd7c9;
+    --rule-hard:   #14161a;
+    --brass:       #7a6a3a;
+    --brass-soft:  #9a8a55;
+    --brass-wash:  #f2eee1;
+    --up:          #2c6049;
+    --down:        #9a3b2f;
+
+    --serif: "Charis SIL", "Bitstream Charter", Charter, Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", "Carlito", "Segoe UI", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:     #15161a;
+      --surface:    #1b1d22;
+      --ink:        #e9e6dd;
+      --ink-soft:   #adb1b9;
+      --ink-mute:   #80858e;
+      --rule:       #33363d;
+      --rule-hard:  #6f7278;
+      --brass:      #c8ae6c;
+      --brass-soft: #9a8a55;
+      --brass-wash: #23231d;
+      --up:         #6fbf95;
+      --down:       #e0907f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:     #15161a;
+    --surface:    #1b1d22;
+    --ink:        #e9e6dd;
+    --ink-soft:   #adb1b9;
+    --ink-mute:   #80858e;
+    --rule:       #33363d;
+    --rule-hard:  #6f7278;
+    --brass:      #c8ae6c;
+    --brass-soft: #9a8a55;
+    --brass-wash: #23231d;
+    --up:         #6fbf95;
+    --down:       #e0907f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 16.5px;
+    line-height: 1.52;
+    margin: 0;
+    padding: 40px 22px 72px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet { max-width: 45rem; margin: 0 auto; }
+
+  /* ---------- masthead ---------- */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.19em; text-transform: uppercase;
+    color: var(--brass);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .kicker .sep { color: var(--rule); }
+  .kicker .stamp { color: var(--ink-mute); font-weight: 600; letter-spacing: 0.13em; }
+
+  h1 {
+    font-size: 33px; font-weight: 700; line-height: 1.14;
+    letter-spacing: -0.012em;
+    margin: 0 0 10px; text-wrap: balance;
+  }
+  .standfirst {
+    font-size: 17px; color: var(--ink-soft); font-style: italic;
+    margin: 0 0 18px; max-width: 40rem;
+  }
+  hr.hard { border: 0; border-top: 1.6px solid var(--rule-hard); margin: 0 0 20px; }
+
+  /* ---------- signal strip ---------- */
+  .strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .strip .cell { background: var(--surface); padding: 11px 13px; }
+  .strip .cap {
+    font-family: var(--sans); font-size: 9.5px; font-weight: 600;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-mute);
+    display: block; margin-bottom: 4px;
+  }
+  .strip .val {
+    font-family: var(--sans); font-size: 19px; font-weight: 600;
+    font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+    display: block; line-height: 1.15;
+  }
+  .strip .sub {
+    font-family: var(--sans); font-size: 11.5px; font-weight: 500;
+    font-variant-numeric: tabular-nums; display: block; margin-top: 3px;
+  }
+  @media (max-width: 560px) { .strip { grid-template-columns: 1fr; } }
+
+  /* ---------- the read ---------- */
+  .read {
+    border-left: 2.5px solid var(--brass);
+    background: var(--brass-wash);
+    padding: 13px 16px; margin-bottom: 26px;
+  }
+  .read .label {
+    font-family: var(--sans); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass);
+    display: block; margin-bottom: 6px;
+  }
+  .read p { margin: 0 0 8px; }
+  .read p:last-child { margin-bottom: 0; }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 30px; }
+  h2 {
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 12px; padding-bottom: 5px;
+    border-bottom: 0.8px solid var(--rule);
+    display: flex; align-items: baseline; gap: 9px;
+  }
+  h2 .n { color: var(--brass-soft); font-weight: 700; }
+  h2 .tail {
+    margin-left: auto; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: none; color: var(--ink-mute); font-size: 11px;
+  }
+  p { margin: 0 0 10px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- tables ---------- */
+  .tw { overflow-x: auto; margin: 0 0 12px; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-family: var(--sans); font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  th {
+    font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-mute);
+    text-align: right; padding: 0 0 5px; border-bottom: 1px solid var(--rule-hard);
+    white-space: nowrap;
+  }
+  td {
+    padding: 5px 0; text-align: right;
+    border-bottom: 0.7px solid var(--rule); color: var(--ink);
+    white-space: nowrap;
+  }
+  th:first-child, td:first-child {
+    text-align: left; white-space: normal; padding-right: 14px;
+    font-weight: 500;
+  }
+  th:not(:first-child), td:not(:first-child) { padding-left: 14px; }
+  tr:last-child td { border-bottom: none; }
+  td.note {
+    text-align: left; white-space: normal;
+    color: var(--ink-soft); font-size: 12.5px; font-weight: 400;
+  }
+  td.up { color: var(--up); font-weight: 600; }
+  td.dn { color: var(--down); font-weight: 600; }
+  td.flat { color: var(--ink-mute); font-weight: 600; }
+  .lede-row td { font-weight: 600; }
+
+  sup.f {
+    font-family: var(--sans); font-size: 9px; font-weight: 700;
+    color: var(--brass); vertical-align: super; margin-left: 1px;
+  }
+
+  /* ---------- calendar ---------- */
+  .cal { display: flex; flex-direction: column; }
+  .cal .row {
+    display: grid; grid-template-columns: 8.5rem 1fr;
+    gap: 14px; padding: 8px 0;
+    border-bottom: 0.7px solid var(--rule);
+  }
+  .cal .row:last-child { border-bottom: none; }
+  .cal .when {
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mute);
+    padding-top: 2px;
+  }
+  .cal .row.pivot .when { color: var(--brass); }
+  .cal .what { font-size: 15px; }
+  .cal .what b { font-weight: 700; }
+  .cal .what span { color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .cal .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  /* ---------- watch list ---------- */
+  ul.watch { list-style: none; margin: 0; padding: 0; }
+  ul.watch li {
+    padding: 8px 0 8px 22px; position: relative;
+    border-bottom: 0.7px solid var(--rule);
+  }
+  ul.watch li:last-child { border-bottom: none; }
+  ul.watch li::before {
+    content: ""; position: absolute; left: 4px; top: 15px;
+    width: 6px; height: 6px; background: var(--brass);
+  }
+  ul.watch b { font-weight: 700; }
+
+  /* ---------- sourcing ---------- */
+  .sourcing {
+    border-top: 1.6px solid var(--rule-hard);
+    padding-top: 14px; margin-top: 38px;
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .sourcing h3 {
+    font-family: var(--sans); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute);
+    margin: 0 0 8px;
+  }
+  .sourcing p { margin-bottom: 8px; }
+  .sourcing .key {
+    font-family: var(--sans); font-size: 12px; color: var(--ink-mute);
+    margin-top: 10px;
+  }
+  .sourcing a { color: var(--brass); text-decoration: none; border-bottom: 0.7px solid var(--rule); }
+  .sourcing a:hover, .sourcing a:focus-visible { border-bottom-color: var(--brass); }
+  a:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+</style>
+
+<div class="sheet">
+
+  <div class="kicker">
+    <span>Daily Macro Briefing</span>
+    <span class="sep">/</span>
+    <span class="stamp">Friday 4 September 2026 &middot; post-close</span>
+  </div>
+
+  <h1>A 162k print on a 31k trend</h1>
+  <p class="standfirst">August payrolls tripled consensus and the market immediately re-priced a September hike. The composition says the labour market is steadier than it is hot &mdash; but with the Fed in blackout from tomorrow, next Friday&rsquo;s CPI is the only vote that still counts.</p>
+  <hr class="hard">
+
+  <div class="strip">
+    <div class="cell">
+      <span class="cap">S&amp;P 500</span>
+      <span class="val">7,718.60</span>
+      <span class="sub" style="color:var(--down)">&minus;0.38% &middot; &minus;29.11</span>
+    </div>
+    <div class="cell">
+      <span class="cap">Sept hike priced</span>
+      <span class="val">58.4%</span>
+      <span class="sub" style="color:var(--up)">+9.0 pts on the day</span>
+    </div>
+    <div class="cell">
+      <span class="cap">Brent crude</span>
+      <span class="val">$95.23</span>
+      <span class="sub" style="color:var(--up)">&asymp;+8% on the week</span>
+    </div>
+  </div>
+
+  <div class="read">
+    <span class="label">The read</span>
+    <p>Two forces are pulling the front end the same way, and only one of them is really about growth. Payrolls beat by roughly 3&times;, but 104k of the 162k came from leisure &amp; hospitality and local-government education &mdash; both rebounds from prior declines, both mean-reverting. Strip them and you are near the 31k twelve-month trend. This is a report that repairs July&rsquo;s &minus;23k, not one that reopens a wage spiral.</p>
+    <p>The second force is the barrel. Brent up ~8% on the week and ~20% on the month on Hormuz risk is a supply shock, and supply shocks are exactly what a hawkish chair points at when arguing that inflation expectations need defending. That is the transmission channel to watch, not payrolls.</p>
+    <p>Net: I would fade the idea that today&rsquo;s print settled the September question. It moved the odds to a coin-flip-plus; the 11 September CPI decides it.</p>
+  </div>
+
+  <section>
+    <h2><span class="n">01</span> The tape <span class="tail">Friday close, New York</span></h2>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>US equities</th><th>Close</th><th>Day</th><th>Week</th></tr>
+        </thead>
+        <tbody>
+          <tr class="lede-row"><td>S&amp;P 500</td><td>7,718.60</td><td class="dn">&minus;0.38%</td><td class="up">+0.1%</td></tr>
+          <tr><td>Nasdaq Composite</td><td>26,506.99</td><td class="dn">&minus;0.29%</td><td class="up">+0.4%</td></tr>
+          <tr><td>Dow Jones Industrial</td><td>53,414.25</td><td class="dn">&minus;0.51%</td><td class="dn">&minus;0.3%</td></tr>
+          <tr><td>VIX<sup class="f">&dagger;</sup></td><td>14.32</td><td class="up">&minus;5.8%</td><td class="flat">&mdash;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Leadership was defensive-plus-cyclical rather than risk-off wholesale: technology, industrials and utilities held up; health care, consumer discretionary, communication services and energy led the decliners. A half-percent drawdown on a 3&times; payroll beat is a market absorbing a rate scare, not one repricing earnings.</p>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Rates</th><th>Level</th><th class="note" style="text-align:left">Context</th></tr>
+        </thead>
+        <tbody>
+          <tr class="lede-row"><td>2-yr Treasury<sup class="f">&Dagger;</sup></td><td>4.34%</td><td class="note">Rose on the print; highest since January 2025</td></tr>
+          <tr><td>10-yr Treasury<sup class="f">&Dagger;</sup></td><td>4.75%</td><td class="note">~+5bp on the week; touched a three-year high mid-week</td></tr>
+          <tr><td>Fed funds target</td><td>3.50&ndash;3.75%</td><td class="note">Market debating a <em>hike</em>, not a cut</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Commodities &amp; FX</th><th>Level</th><th>Day</th><th class="note" style="text-align:left">Context</th></tr>
+        </thead>
+        <tbody>
+          <tr class="lede-row"><td>Brent crude</td><td>$95.23</td><td class="dn">&minus;0.31%</td><td class="note">&asymp;+8% week, &asymp;+20% month</td></tr>
+          <tr><td>WTI crude</td><td>$90.35</td><td class="dn">&minus;1.45%</td><td class="note">Spread to Brent ~$5</td></tr>
+          <tr><td>Gold, spot<sup class="f">&dagger;</sup></td><td>$4,403</td><td class="flat">&asymp;flat</td><td class="note">&minus;21% from the 28 Jan record of $5,602</td></tr>
+          <tr><td>US dollar index<sup class="f">&sect;</sup></td><td>n/a</td><td class="flat">&mdash;</td><td class="note">Reported near multi-month lows; no clean print</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Gold 21% below its January high while Brent is up a fifth in a month is the tell that this is an energy-supply story, not a broad inflation-hedge bid. If gold turns up alongside crude, the market has started pricing a policy mistake &mdash; that is the pairing to watch.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span> The print <span class="tail">Employment Situation, August</span></h2>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr><th>Measure</th><th>Actual</th><th>Consensus</th><th class="note" style="text-align:left">Comment</th></tr>
+        </thead>
+        <tbody>
+          <tr class="lede-row"><td>Nonfarm payrolls</td><td class="up">+162,000</td><td>+53&ndash;56,000</td><td class="note">Largest gain in five months</td></tr>
+          <tr><td>Unemployment rate</td><td>4.1%</td><td>4.1&ndash;4.2%<sup class="f">&dagger;</sup></td><td class="note">Unchanged</td></tr>
+          <tr><td>July payrolls, prior</td><td class="dn">&minus;23,000</td><td>&mdash;</td><td class="note">The month this report repaired</td></tr>
+          <tr><td>Trailing 12-month average</td><td>+31,000</td><td>&mdash;</td><td class="note">The trend the print sits against</td></tr>
+          <tr><td>&mdash; Leisure &amp; hospitality</td><td>+62,000</td><td>&mdash;</td><td class="note">Restaurants and bars +59,000, after two monthly declines</td></tr>
+          <tr><td>&mdash; Local government education</td><td>+42,000</td><td>&mdash;</td><td class="note">Reversal of a prior drag; calendar-sensitive</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The arithmetic that matters: those two lines are 104,000 of the 162,000. Both are reversals of prior weakness rather than fresh demand, and local-government education is one of the most seasonal-adjustment-sensitive series in the report. Ex those categories the month lands near 58,000 &mdash; above the 31,000 trend, but nowhere near a print that forces a hand.</p>
+    <p>The honest hawkish counter is that the unemployment rate did not budge at 4.1% despite a labour force that has been growing. A steady rate on a rising participation base is genuine absorption, and it is the piece of this report that survives the composition critique.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span> The path <span class="tail">FOMC 15&ndash;16 September</span></h2>
+    <p>Fed funds futures moved to a <b>58.4% probability of a September hike</b>, up 9.0 percentage points on the day. That is the market&rsquo;s first sustained majority for tightening in this cycle&rsquo;s turn, and it sits on top of a hawkish Jackson Hole from Chair Warsh on 28 August.</p>
+    <p>Cutting the other way: Governor Waller said on 3 September he would be inclined to support holding at the current setting if the disinflation in the next fortnight&rsquo;s data holds &mdash; explicitly making August CPI the swing input for his vote. He also flagged a pending Commerce methodology change to how financial-services fees are estimated, which he expects could lower twelve-month PCE inflation by a few tenths, and noted that non-market services were roughly half of July&rsquo;s core PCE increase. Read plainly: a senior governor is arguing the inflation data overstates the underlying rate, days before the print that decides the meeting.</p>
+    <p>So the committee arrives at 16 September with a chair leaning hawkish, at least one governor leaning hold, and a single CPI release between them. That is an unusually binary setup for a meeting priced at 58/42, and it argues for owning optionality rather than direction into 11 September.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span> The barrel <span class="tail">Strait of Hormuz</span></h2>
+    <p>The US struck Iran again this week after roughly a month of calm; Tehran retaliated against American bases in the region and against shipping in the strait. Transit volume is the number to track, not the headline: six commodity vessels crossed on Wednesday, against eleven on Tuesday and a ten-day average near thirteen. That is a better-than-50% drop in throughput in a single session.</p>
+    <p>Brent near $95 already embeds a fear premium, but a premium priced off disrupted transit is unstable in both directions &mdash; it decays fast if vessels return, and it gaps if they do not. For a portfolio, the asymmetry is that this is the one live channel that can turn a hold into a hike by way of headline CPI and inflation expectations, without any change in the labour data at all.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span> The week <span class="tail">7&ndash;11 September</span></h2>
+    <div class="cal">
+      <div class="row">
+        <div class="when">Mon 7 Sep</div>
+        <div class="what"><b>Labor Day</b> <span>&mdash; US equity and bond markets closed.</span></div>
+      </div>
+      <div class="row">
+        <div class="when">Sat 5 &ndash; Thu 17</div>
+        <div class="what"><b>FOMC blackout</b> <span>&mdash; no further Fed commentary until the decision. Today&rsquo;s pricing has to survive the week on data alone.</span></div>
+      </div>
+      <div class="row">
+        <div class="when">Thu 10 Sep</div>
+        <div class="what"><b>PPI, August</b> <span>&mdash; 8:30 ET, with initial claims. First read on whether the energy move is reaching the pipeline.</span></div>
+      </div>
+      <div class="row pivot">
+        <div class="when">Fri 11 Sep</div>
+        <div class="what"><b>CPI, August &mdash; the pivot</b> <span>&mdash; 8:30 ET. Waller has said his vote turns on it; Michigan sentiment and inflation expectations follow at 10:00.</span></div>
+      </div>
+      <div class="row">
+        <div class="when">Wed 16 Sep</div>
+        <div class="what"><b>FOMC decision</b> <span>&mdash; 2:00 ET, press conference 2:30.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span> What would change the view</h2>
+    <ul class="watch">
+      <li><b>Core CPI at or above 0.4% m/m on 11 September.</b> That takes the hike from contested to consensus and puts the 2-yr through 4.50%. The composition argument on payrolls stops mattering.</li>
+      <li><b>Hormuz transits back above ten a day.</b> The fear premium in Brent unwinds quickly, headline inflation risk drops out, and Waller&rsquo;s hold case becomes the base case.</li>
+      <li><b>Gold turning higher with crude.</b> The one combination that says the market has stopped pricing a supply shock and started pricing a policy error. Currently absent &mdash; gold sits 21% below its January high.</li>
+      <li><b>September payrolls reverting toward trend.</b> If the leisure and education rebounds give back next month, the 31k trend reasserts and this week&rsquo;s repricing looks like an overreaction to a single noisy print.</li>
+    </ul>
+  </section>
+
+  <div class="sourcing">
+    <h3>Sourcing and confidence</h3>
+    <p>Compiled after the 4 September US close. Direct market-data feeds and primary sources (BLS, Treasury, exchange APIs) are blocked by this environment&rsquo;s network policy, so every figure here is drawn from published news reporting rather than from a primary feed, and cross-checked across outlets where possible. Verify anything you intend to trade or quote against your own terminal.</p>
+    <p class="key">
+      <sup class="f">&dagger;</sup> Sources disagree or the timestamp is ambiguous. VIX and the sector detail may reflect Thursday&rsquo;s session; spot gold was reported at both $4,403 and $4,471; the unemployment consensus was quoted as both 4.1% and 4.2%.<br>
+      <sup class="f">&Dagger;</sup> Yield levels are the confirmed pre-report readings (10-yr 4.7541%, 2-yr 4.3390%); both rose after the release, but no verified closing level was available.<br>
+      <sup class="f">&sect;</sup> No verified level obtained.
+    </p>
+    <p class="key">Principal reporting: CNBC, Reuters via KFGO, UPI, Yahoo Finance, TheStreet, Trading Economics, Bloomberg, Kiplinger, Investing.com, Semafor, Benzinga.</p>
+  </div>
+
+</div>
